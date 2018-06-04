@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
 {
+    #region Singleton
     public static GameManager instance;
 	private void Awake()
 	{
@@ -13,23 +14,26 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this);
 	}
+#endregion
 
-	public Text scoreText;
+    public Text scoreText;
     string scoreTextText;
 
     public Transform twilight;
+    Vector2 twilightOriginPos;
 
-    bool gaming;
+    public GameObject startButton;
+    [HideInInspector]
+    public bool gaming;
     float score;
 
 	void Start () 
 	{
         scoreTextText = scoreText.text;
+        twilightOriginPos = twilight.position;
 
         Init();
 
-        //测试
-        GameStart();
 	}
 
 	void Update () 
@@ -44,10 +48,34 @@ public class GameManager : MonoBehaviour
     void Init()
     {
         score = 0;
+        scoreText.text = scoreTextText + "0";
     }
 
-    void GameStart()
+    public void GameStart()
     {
         gaming = true;
+
+        startButton.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
+        gaming = false;
+    }
+
+    public void GameReset()
+    {
+        twilight.position = twilightOriginPos;
+        Init();
+        startButton.SetActive(true);
+
+    }
+
+    public void GameRestart()
+    {
+        GameReset();
+
+        GameStart();
     }
 }

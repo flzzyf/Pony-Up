@@ -14,6 +14,9 @@ public class CaneController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+        if (!GameManager.instance.gaming)
+            return;
+
         MovementControl();
 
         RotationControl();
@@ -25,7 +28,7 @@ public class CaneController : MonoBehaviour
             Debug.Log(distance);
             if (distance > maxDistance)
             {
-                cane.Translate(-dir * Time.deltaTime);
+                cane.Translate(dir * Time.deltaTime);
             }
         }
 
