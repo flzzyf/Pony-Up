@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class TwilightSparkle : MonoBehaviour 
 {
-
+    SpriteRenderer gfx;
 
 	void Start () 
 	{
-		
+        gfx = GetComponentInChildren<SpriteRenderer>();
 	}
 	
 	void Update () 
 	{
-		
+        if(GameManager.instance.gaming)
+        {
+            bool flip = GameManager.instance.caneController.cane.position.x < 0;
+            gfx.flipX = flip;
+        }
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -21,6 +25,7 @@ public class TwilightSparkle : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Debug.Log("DIE");
+            GameManager.instance.GameOver();
         }
 	}
 }

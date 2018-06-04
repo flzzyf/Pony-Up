@@ -27,8 +27,15 @@ public class GameManager : MonoBehaviour
     public bool gaming;
     float score;
 
+    LevelManager levelManager;
+    [HideInInspector]
+    public CaneController caneController;
+
 	void Start () 
 	{
+        levelManager = GetComponent<LevelManager>();
+        caneController = GetComponent<CaneController>();
+
         scoreTextText = scoreText.text;
         twilightOriginPos = twilight.position;
 
@@ -56,12 +63,24 @@ public class GameManager : MonoBehaviour
         gaming = true;
 
         startButton.SetActive(false);
+
+        levelManager.StartLevel();
     }
 
     public void GameOver()
     {
         Debug.Log("GameOver");
         gaming = false;
+
+        StartCoroutine(GameOverAnim());
+
+    }
+
+    IEnumerator GameOverAnim()
+    {
+        yield return new WaitForSeconds(1f);
+        GameReset();
+
     }
 
     public void GameReset()
@@ -69,6 +88,8 @@ public class GameManager : MonoBehaviour
         twilight.position = twilightOriginPos;
         Init();
         startButton.SetActive(true);
+
+        levelManager.ClearLevel();
 
     }
 

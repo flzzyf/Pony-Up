@@ -25,7 +25,6 @@ public class CaneController : MonoBehaviour
         {
             Vector2 dir = GameManager.instance.twilight.position - cane.position;
             float distance = dir.magnitude;
-            Debug.Log(distance);
             if (distance > maxDistance)
             {
                 cane.Translate(dir * Time.deltaTime);
