@@ -22,10 +22,8 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator Level1()
     {
-        int a = 10;
-        while(a > 0)
+        while(GameManager.instance.gaming)
         {
-            a--;
             Instantiate(cube, generatePos, Quaternion.identity, objectParent);
             yield return new WaitForSeconds(1f);
         }

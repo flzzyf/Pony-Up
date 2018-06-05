@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     string scoreTextText;
 
-    public Transform twilight;
+    public GameObject twilight;
     Vector2 twilightOriginPos;
 
     public GameObject startButton;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         caneController = GetComponent<CaneController>();
 
         scoreTextText = scoreText.text;
-        twilightOriginPos = twilight.position;
+        twilightOriginPos = twilight.transform.position;
 
         Init();
 
@@ -85,7 +85,9 @@ public class GameManager : MonoBehaviour
 
     public void GameReset()
     {
-        twilight.position = twilightOriginPos;
+        twilight.transform.position = twilightOriginPos;
+        twilight.GetComponent<TwilightSparkle>().Rebirth();
+
         Init();
         startButton.SetActive(true);
 

@@ -23,7 +23,7 @@ public class CaneController : MonoBehaviour
 
         if(!mouseDown)
         {
-            Vector2 dir = GameManager.instance.twilight.position - cane.position;
+            Vector2 dir = GameManager.instance.twilight.transform.position - cane.position;
             float distance = dir.magnitude;
             if (distance > maxDistance)
             {
