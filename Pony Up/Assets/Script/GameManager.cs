@@ -50,6 +50,13 @@ public class GameManager : MonoBehaviour
             score += Time.deltaTime;
             scoreText.text = scoreTextText + (score * 10).ToString("F0");
         }
+
+        if (!Application.isFocused)
+        {
+            //手机上退出到后台
+            Application.Quit();
+        }
+
 	}
 
     void Init()
