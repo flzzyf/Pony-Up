@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour 
+public class LevelGenerator : MonoBehaviour
 {
     public GameObject cube;
     public Vector2 generatePos = new Vector2(0, 6);
     [HideInInspector]
     public Transform objectParent;
 
-	private void Start()
-	{
+    private void Start()
+    {
         objectParent = new GameObject("objectParent").transform;
-	}
+    }
 
-	public void StartLevel()
+    public void StartLevel()
     {
         StartCoroutine(Level1());
 
@@ -22,8 +22,10 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator Level1()
     {
-        while(GameManager.instance.gaming)
+        int a = 10;
+        while (GameManager.instance.gaming && a > 0)
         {
+            a--;
             Instantiate(cube, generatePos, Quaternion.identity, objectParent);
             yield return new WaitForSeconds(1f);
         }

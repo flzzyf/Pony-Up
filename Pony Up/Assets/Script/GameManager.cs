@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
     #region Singleton
     public static GameManager instance;
-	private void Awake()
-	{
+    private void Awake()
+    {
         if (instance == null)
             instance = this;
         else
             Destroy(this);
-	}
-#endregion
+    }
+    #endregion
 
     public Text scoreText;
     string scoreTextText;
@@ -31,8 +31,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public CaneController caneController;
 
-	void Start () 
-	{
+    public Text testText;
+
+    void Start()
+    {
         levelManager = GetComponent<LevelManager>();
         caneController = GetComponent<CaneController>();
 
@@ -43,21 +45,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-	void Update () 
-	{
-        if(gaming)
+    void Update()
+    {
+        if (gaming)
         {
             score += Time.deltaTime;
             scoreText.text = scoreTextText + (score * 10).ToString("F0");
         }
 
-        if (!Application.isFocused)
-        {
-            //手机上退出到后台
-            Application.Quit();
-        }
+        Vector3 acc = new Vector3(Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
+        testText.text = acc.ToString();
 
-	}
+
+    }
 
     void Init()
     {

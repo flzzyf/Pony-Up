@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4904156719437290}
   - component: {fileID: 212311289005139390}
+  - component: {fileID: 114701385454468678}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -129,6 +130,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.8
+--- !u!114 &114701385454468678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118608015057156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d956a68c711a54a2ab569c7a5fff7da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212311289005139390
 SpriteRenderer:
   m_ObjectHideFlags: 1
