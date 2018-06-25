@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/GameManager.cs">
     <Files>
       <File FileName="Assets/Script/Falling.cs" Line="9" Column="28" />
-      <File FileName="Assets/Script/GameManager.cs" Line="54" Column="36" />
+      <File FileName="Assets/Script/GameManager.cs" Line="43" Column="1" />
       <File FileName="Assets/Script/CaneController.cs" Line="58" Column="30" />
       <File FileName="Assets/Script/TwilightSparkle.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/LevelGenerator.cs" Line="1" Column="1" />
