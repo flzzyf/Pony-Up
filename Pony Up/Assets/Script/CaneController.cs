@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaneController : MonoBehaviour 
+public class CaneController : MonoBehaviour
 {
     public Transform cane;
     public float maxRotation = 80;
@@ -11,9 +11,15 @@ public class CaneController : MonoBehaviour
     Vector2 originPos;
     Vector2 offset;
     bool mouseDown = false;
+    Rigidbody2D rb;
 
-	private void FixedUpdate()
-	{
+    void Start()
+    {
+        rb = cane.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
         if (!GameManager.instance.gaming)
             return;
 
@@ -21,7 +27,8 @@ public class CaneController : MonoBehaviour
 
         RotationControl();
 
-        if(!mouseDown)
+        //自动复位
+        if (!mouseDown)
         {
             Vector2 dir = GameManager.instance.twilight.transform.position - cane.position;
             float distance = dir.magnitude;
@@ -31,9 +38,9 @@ public class CaneController : MonoBehaviour
             }
         }
 
-	}
+    }
 
-	void MovementControl()
+    void MovementControl()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -48,12 +55,13 @@ public class CaneController : MonoBehaviour
             Vector2 mouseWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             offset = mouseWorldPoint - originPos;
             //Debug.Log(offset);
-            cane.Translate(offset, Space.World);
+            //cane.Translate(offset, Space.World);
+            rb.AddForce(offset * 100, ForceMode2D.Force);
 
             originPos = mouseWorldPoint;
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             offset = Vector2.zero;
 
