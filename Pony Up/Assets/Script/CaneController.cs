@@ -54,9 +54,10 @@ public class CaneController : MonoBehaviour
         {
             Vector2 mouseWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             offset = mouseWorldPoint - originPos;
+            Vector2 offset2 = mouseWorldPoint - (Vector2)cane.position;
             //Debug.Log(offset);
-            //cane.Translate(offset, Space.World);
-            rb.AddForce(offset * 100, ForceMode2D.Force);
+            cane.Translate(offset, Space.World);
+            // rb.AddForce(offset2 * 1000, ForceMode2D.Force);
 
             originPos = mouseWorldPoint;
         }
@@ -64,6 +65,7 @@ public class CaneController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             offset = Vector2.zero;
+            rb.velocity = Vector2.zero;
 
             mouseDown = false;
         }

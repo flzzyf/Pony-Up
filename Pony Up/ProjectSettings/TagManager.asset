@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3836493981
+    locked: 0
+  - name: Midground
+    uniqueID: 3039552039
+    locked: 0
+  - name: Foreground
+    uniqueID: 3873469523
+    locked: 0
+  - name: Pone
+    uniqueID: 875199037
+    locked: 0
+  - name: Cloud
+    uniqueID: 4097309921
+    locked: 0

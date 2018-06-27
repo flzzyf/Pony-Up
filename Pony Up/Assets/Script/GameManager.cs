@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public CaneController caneController;
 
-    public Text testText;
-
     void Start()
     {
         levelManager = GetComponent<LevelManager>();
@@ -52,11 +50,6 @@ public class GameManager : MonoBehaviour
             score += Time.deltaTime;
             scoreText.text = scoreTextText + (score * 10).ToString("F0");
         }
-
-        Vector3 acc = new Vector3(Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
-        testText.text = acc.ToString();
-
-
     }
 
     void Init()
