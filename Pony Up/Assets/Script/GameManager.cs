@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     public GameObject twilight;
     Vector2 twilightOriginPos;
 
-    public GameObject startButton;
     [HideInInspector]
     public bool gaming;
     float score;
@@ -31,6 +30,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public CaneController caneController;
 
+    public Transform groundObject;
+    Vector2 groundObjectPos;
+
+    public GameObject startingPanel;
+
     void Start()
     {
         levelManager = GetComponent<LevelManager>();
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
 
         scoreTextText = scoreText.text;
         twilightOriginPos = twilight.transform.position;
+
+        groundObjectPos = groundObject.position;
 
         Init();
 
@@ -62,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         gaming = true;
 
-        startButton.SetActive(false);
+        startingPanel.SetActive(false);
 
         levelManager.StartLevel();
     }
@@ -89,9 +95,11 @@ public class GameManager : MonoBehaviour
         twilight.GetComponent<TwilightSparkle>().Rebirth();
 
         Init();
-        startButton.SetActive(true);
+        startingPanel.SetActive(true);
 
         levelManager.ClearLevel();
+
+        groundObject.position = groundObjectPos;
 
     }
 

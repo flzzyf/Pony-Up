@@ -7,16 +7,11 @@ public class CaneController : MonoBehaviour
     public Transform cane;
     public float maxRotation = 80;
     public float maxDistance = 3;
+    public float maxSpeed = 2;
 
     Vector2 originPos;
     Vector2 offset;
     bool mouseDown = false;
-    Rigidbody2D rb;
-
-    void Start()
-    {
-        rb = cane.gameObject.GetComponent<Rigidbody2D>();
-    }
 
     private void FixedUpdate()
     {
@@ -44,8 +39,7 @@ public class CaneController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            originPos = Input.mousePosition;
-            originPos = Camera.main.ScreenToWorldPoint(originPos);
+            originPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             mouseDown = true;
         }
@@ -54,18 +48,18 @@ public class CaneController : MonoBehaviour
         {
             Vector2 mouseWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             offset = mouseWorldPoint - originPos;
-            Vector2 offset2 = mouseWorldPoint - (Vector2)cane.position;
-            //Debug.Log(offset);
-            cane.Translate(offset, Space.World);
-            // rb.AddForce(offset2 * 1000, ForceMode2D.Force);
+            Vector2 targetPos = originPos + offset;
+            // Vector2 movement = offset.normalized * maxSpeed;
+            Debug.Log(targetPos);
+            // cane.Translate(movement, Space.World);
+            cane.position = targetPos;
 
-            originPos = mouseWorldPoint;
+            //originPos = mouseWorldPoint;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             offset = Vector2.zero;
-            rb.velocity = Vector2.zero;
 
             mouseDown = false;
         }
