@@ -30,10 +30,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public CaneController caneController;
 
-    public Transform groundObject;
-    Vector2 groundObjectPos;
-
     public GameObject startingPanel;
+    public GameObject groundObject;
 
     void Start()
     {
@@ -43,7 +41,6 @@ public class GameManager : MonoBehaviour
         scoreTextText = scoreText.text;
         twilightOriginPos = twilight.transform.position;
 
-        groundObjectPos = groundObject.position;
 
         Init();
 
@@ -99,7 +96,7 @@ public class GameManager : MonoBehaviour
 
         levelManager.ClearLevel();
 
-        groundObject.position = groundObjectPos;
+        groundObject.GetComponent<WorldObject>().Reset();
 
     }
 

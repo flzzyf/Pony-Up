@@ -5,7 +5,7 @@ using UnityEngine;
 public class Falling : MonoBehaviour
 {
     public float speed = .8f;
-    public bool destoryWhenInvisible = false;
+    public bool destoryWhenInvisible = true;
 
     bool invisible = false;
     void FixedUpdate()
