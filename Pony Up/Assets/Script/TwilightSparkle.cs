@@ -18,10 +18,7 @@ public class TwilightSparkle : MonoBehaviour
     {
         if (GameManager.Instance().gaming)
         {
-            //bool flip = GameManager.instance.caneController.cane.position.x < 0;
-            //gfx.flipX = flip;
-
-            float scaleX = GameManager.Instance().caneController.cane.position.x < 0 ? -1 : 1;
+            float scaleX = CaneController.Instance().cane.position.x < 0 ? -1 : 1;
             gfx.transform.localScale = new Vector3(scaleX, 1, 1);
         }
     }

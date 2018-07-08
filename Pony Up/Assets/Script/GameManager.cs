@@ -15,24 +15,15 @@ public class GameManager : Singleton<GameManager>
     public bool gaming;
     float score;
 
-    LevelManager levelManager;
-    [HideInInspector]
-    public CaneController caneController;
-
     public GameObject startingPanel;
     public GameObject groundObject;
 
     void Start()
     {
-        levelManager = GetComponent<LevelManager>();
-        caneController = GetComponent<CaneController>();
-
         scoreTextText = scoreText.text;
         twilightOriginPos = twilight.transform.position;
 
-
         Init();
-
     }
 
     void Update()
@@ -56,7 +47,9 @@ public class GameManager : Singleton<GameManager>
 
         startingPanel.SetActive(false);
 
-        levelManager.StartLevel();
+        LevelManager.Instance().StartLevel();
+
+        CloudManager.Instance().StartGenerate();
     }
 
     public void GameOver()
@@ -65,7 +58,6 @@ public class GameManager : Singleton<GameManager>
         gaming = false;
 
         StartCoroutine(GameOverAnim());
-
     }
 
     IEnumerator GameOverAnim()
@@ -83,7 +75,7 @@ public class GameManager : Singleton<GameManager>
         Init();
         startingPanel.SetActive(true);
 
-        levelManager.ClearLevel();
+        LevelManager.Instance().ClearLevel();
 
         groundObject.GetComponent<WorldObject>().Reset();
 
