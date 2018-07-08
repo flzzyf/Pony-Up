@@ -16,7 +16,7 @@ public class WorldObject : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.gaming &&
+        if (GameManager.Instance().gaming &&
          Mathf.Abs(transform.position.y - originPos.y) < movingDistance)
         {
             transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);

@@ -2,39 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwilightSparkle : MonoBehaviour 
+public class TwilightSparkle : MonoBehaviour
 {
     public GameObject gfx;
     Animator animator;
     Collider2D collider2D;
 
-	void Start () 
-	{
+    void Start()
+    {
         animator = GetComponentInChildren<Animator>();
         collider2D = GetComponentInChildren<Collider2D>();
-	}
-	
-	void Update () 
-	{
-        if(GameManager.instance.gaming)
+    }
+
+    void Update()
+    {
+        if (GameManager.Instance().gaming)
         {
             //bool flip = GameManager.instance.caneController.cane.position.x < 0;
             //gfx.flipX = flip;
 
-            float scaleX = GameManager.instance.caneController.cane.position.x < 0 ? -1 : 1;
+            float scaleX = GameManager.Instance().caneController.cane.position.x < 0 ? -1 : 1;
             gfx.transform.localScale = new Vector3(scaleX, 1, 1);
         }
-	}
+    }
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-        if(collision.gameObject.tag == "Enemy")
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("DIE");
             Dead();
-            GameManager.instance.GameOver();
+            GameManager.Instance().GameOver();
         }
-	}
+    }
 
     void Dead()
     {

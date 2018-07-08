@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
     IEnumerator Level1()
     {
         int a = 10;
-        while (GameManager.instance.gaming && a > 0)
+        while (GameManager.Instance().gaming && a > 0)
         {
             a--;
             Instantiate(cube, generatePos, Quaternion.identity, objectParent);

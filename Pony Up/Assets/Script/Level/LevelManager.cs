@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour 
+public class LevelManager : Singleton<LevelManager>
 {
     LevelGenerator levelGenerator;
 
-	void Start () 
-	{
+    void Start()
+    {
         levelGenerator = GetComponent<LevelGenerator>();
-	}
-	
-	void Update () 
-	{
-		
-	}
+    }
+
+    void Update()
+    {
+
+    }
 
     public void StartLevel()
     {
@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public void ClearLevel()
     {
-        while(levelGenerator.objectParent.childCount > 0)
+        while (levelGenerator.objectParent.childCount > 0)
         {
             Destroy(levelGenerator.objectParent.GetChild(0).gameObject);
             levelGenerator.objectParent.GetChild(0).SetParent(null);
