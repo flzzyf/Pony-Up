@@ -10,8 +10,6 @@ public class CaneController : Singleton<CaneController>
     public float speed = 2;
     public float offsetScale = 1.5f;
 
-    public Transform cube;
-
     Vector2 offset;
     bool mouseDown = false;
     Vector2 lastMousePoint;
@@ -58,8 +56,6 @@ public class CaneController : Singleton<CaneController>
             offset = mousePoint - lastMousePoint;
             targetPos += offset * offsetScale;
 
-            cube.position = targetPos;
-
             //向目标点移动权杖
             if (Vector2.Distance(cane.position, targetPos) < speed * Time.deltaTime)
             {
@@ -94,4 +90,10 @@ public class CaneController : Singleton<CaneController>
         cane.rotation = Quaternion.Lerp(cane.rotation, Quaternion.Euler(rotation), 0.1f);
     }
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(targetPos, 0.5f);
+
+    }
 }

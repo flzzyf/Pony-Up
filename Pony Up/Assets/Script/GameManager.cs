@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
 
         LevelManager.Instance().StartLevel();
 
-        CloudManager.Instance().StartGenerate();
+        CloudManager.Instance().StartGenerateCloud();
     }
 
     public void GameOver()
@@ -58,6 +58,8 @@ public class GameManager : Singleton<GameManager>
         gaming = false;
 
         StartCoroutine(GameOverAnim());
+        CloudManager.Instance().StopGenerateCloud();
+
     }
 
     IEnumerator GameOverAnim()
@@ -79,6 +81,7 @@ public class GameManager : Singleton<GameManager>
 
         groundObject.GetComponent<WorldObject>().Reset();
 
+        CloudManager.Instance().ClearCloud();
     }
 
     public void GameRestart()

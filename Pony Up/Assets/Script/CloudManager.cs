@@ -10,19 +10,46 @@ public class CloudManager : Singleton<CloudManager>
     public float generateY;
     public float destoryY;
 
-    void Start()
-    {
+    public Vector2 generateRate;
+    bool generatingCloud = false;
 
+    Transform cloudParent;
+
+    public void StartGenerateCloud()
+    {
+        generatingCloud = true;
+        cloudParent = new GameObject("Cloud Parent").transform;
+
+        StartCoroutine(LoopGenerateCloud());
     }
 
-    void Update()
+    public void StopGenerateCloud()
     {
-
+        generatingCloud = false;
     }
 
-    public void StartGenerate()
+    public void ClearCloud()
     {
-        StartCoroutine(GenerateCloud());
+        Destroy(cloudParent.gameObject);
+    }
+
+    IEnumerator LoopGenerateCloud()
+    {
+        float delay = 0;
+        while (generatingCloud)
+        {
+            if (delay <= 0)
+            {
+                delay = Random.Range(generateRate.x, generateRate.y);
+
+                StartCoroutine(GenerateCloud());
+            }
+            else
+            {
+                delay -= Time.deltaTime;
+            }
+            yield return null;
+        }
     }
 
     IEnumerator GenerateCloud()
@@ -30,8 +57,8 @@ public class CloudManager : Singleton<CloudManager>
         int type = Random.Range(0, cloudPrefabs.Length - 1);
         float randomX = Random.Range(-rangeX, rangeX);
         GameObject cloud = Instantiate(cloudPrefabs[type],
-            new Vector2(randomX, generateY), Quaternion.identity);
-        while (cloud.transform.position.y > destoryY)
+            new Vector2(randomX, generateY), Quaternion.identity, cloudParent);
+        while (generatingCloud && cloud.transform.position.y > destoryY)
         {
             cloud.transform.Translate(Vector2.down * speed * Time.deltaTime);
             yield return null;
@@ -45,6 +72,5 @@ public class CloudManager : Singleton<CloudManager>
         float height = 1f;
         Gizmos.DrawCube(new Vector2(0, generateY - height / 2), new Vector2(rangeX, height));
         Gizmos.DrawCube(new Vector2(0, destoryY), new Vector2(rangeX, height));
-
     }
 }

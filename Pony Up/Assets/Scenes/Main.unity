@@ -1308,9 +1308,10 @@ MonoBehaviour:
   - {fileID: 1141960797492224, guid: fb87fd4df23e84cb0a10ffc886e03fac, type: 2}
   - {fileID: 1642718973897318, guid: ec77eb21faf0c48f99c755468dc32e1e, type: 2}
   speed: 0.8
-  rangeX: 5.05
+  rangeX: 3.52
   generateY: 6.73
   destoryY: -5.78
+  generateRate: {x: 3, y: 5}
 --- !u!1 &925628935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,7 +1549,7 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1094407528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
