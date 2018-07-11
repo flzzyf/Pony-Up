@@ -14,6 +14,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
     public enum objectType { Cube, Star };
 
     int lastLevelIndex = 0;
+    public bool firstLevel = true;
 
     void Start()
     {
@@ -26,12 +27,20 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     public void StartLevel()
     {
+        
         int levelIndex = Random.Range(0, levelList.Count);
         if (levelIndex == lastLevelIndex)
         {
             levelIndex++;
             levelIndex %= levelList.Count;
         }
+
+        if (firstLevel)
+        {
+            levelIndex = 0;
+            firstLevel = false;
+        }
+
         lastLevelIndex = levelIndex;
         // levelIndex = 1;
         levelList[levelIndex].StartLevel();

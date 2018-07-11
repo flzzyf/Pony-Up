@@ -46,11 +46,15 @@ public class GameManager : Singleton<GameManager>
     {
         score = 0;
         scoreText.text = scoreTextText + "0";
+
+        LevelGenerator.Instance().firstLevel = true;
     }
 
     public void GameStart()
     {
         gaming = true;
+
+        Init();
 
         startingPanel.SetActive(false);
 
@@ -81,7 +85,6 @@ public class GameManager : Singleton<GameManager>
         twilight.transform.position = twilightOriginPos;
         twilight.GetComponent<TwilightSparkle>().Rebirth();
 
-        Init();
         startingPanel.SetActive(true);
 
         LevelManager.Instance().ClearLevel();
