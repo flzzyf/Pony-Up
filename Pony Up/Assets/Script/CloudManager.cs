@@ -62,7 +62,7 @@ public class CloudManager : Singleton<CloudManager>
     IEnumerator GenerateCloud()
     {
         //随机云的种类，如果和上一朵相同就加一
-        int type = Random.Range(0, cloudPrefabs.Length - 1);
+        int type = Random.Range(0, cloudPrefabs.Length);
         if (type == lastCloudType)
         {
             type++;

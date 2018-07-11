@@ -94,6 +94,5 @@ public class CaneController : Singleton<CaneController>
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(targetPos, 0.5f);
-
     }
 }
