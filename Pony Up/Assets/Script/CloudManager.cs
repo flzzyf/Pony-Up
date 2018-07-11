@@ -56,13 +56,36 @@ public class CloudManager : Singleton<CloudManager>
         }
     }
 
+    float lastCloudX = 0;
+    int lastCloudType = 0;
+
     IEnumerator GenerateCloud()
     {
+        //随机云的种类，如果和上一朵相同就加一
         int type = Random.Range(0, cloudPrefabs.Length - 1);
-        zyf.Out(type);
-        float randomX = Random.Range(-rangeX, rangeX);
+        if (type == lastCloudType)
+        {
+            type++;
+            type %= cloudPrefabs.Length;
+        }
+        lastCloudType = type;
+        //随机云的X坐标，如果和上一朵云太接近就重新生成
+        float randomX;
+        do
+        {
+            randomX = Random.Range(-rangeX, rangeX);
+        }
+        while (Mathf.Abs(randomX - lastCloudX) < 2);
+        lastCloudX = randomX;
+
+        //生成云
         GameObject cloud = Instantiate(cloudPrefabs[type],
             new Vector2(randomX, generateY), Quaternion.identity, cloudParent);
+        //云有33%概率会遮挡小马
+        int random = Random.Range(0, 3);
+        if (random > 1)
+            cloud.GetComponent<SpriteRenderer>().sortingLayerName = "Cloud";
+        //持续下降
         while (generatingCloud && cloud.transform.position.y > destoryY)
         {
             cloud.transform.Translate(Vector2.down * speed * Time.deltaTime);
