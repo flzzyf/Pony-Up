@@ -6,12 +6,12 @@ public class TwilightSparkle : MonoBehaviour
 {
     public GameObject gfx;
     Animator animator;
-    Collider2D collider2D;
+    Collider2D[] colliders;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        collider2D = GetComponentInChildren<Collider2D>();
+        colliders = GetComponentsInChildren<Collider2D>();
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class TwilightSparkle : MonoBehaviour
         if (GameManager.Instance().gaming)
         {
             float scaleX = CaneController.Instance().cane.position.x < 0 ? -1 : 1;
-            gfx.transform.localScale = new Vector3(scaleX, 1, 1);
+            transform.localScale = new Vector3(scaleX, 1, 1);
         }
     }
 
@@ -36,13 +36,19 @@ public class TwilightSparkle : MonoBehaviour
     void Dead()
     {
         animator.SetBool("dead", true);
-        collider2D.enabled = false;
+        foreach (var item in colliders)
+        {
+            item.enabled = false;
+        }
     }
 
     public void Rebirth()
     {
         animator.SetBool("dead", false);
-        collider2D.enabled = true;
+        foreach (var item in colliders)
+        {
+            item.enabled = true;
+        }
 
 
     }

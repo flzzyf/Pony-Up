@@ -8,10 +8,20 @@ public class Falling : MonoBehaviour
     public bool destoryWhenInvisible = true;
 
     bool invisible = false;
+
+    void Start()
+    {
+        // transform.GetComponent<Rigidbody2D>().velocity = Vector2.down;
+
+    }
+
     void FixedUpdate()
     {
         if (!invisible)
-            transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+        {
+            // transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+
+        }
     }
 
     void OnBecameInvisible()

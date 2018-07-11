@@ -15,10 +15,14 @@ public class CloudManager : Singleton<CloudManager>
 
     Transform cloudParent;
 
+    void Start()
+    {
+        cloudParent = new GameObject("Parent_Cloud").transform;
+    }
+
     public void StartGenerateCloud()
     {
         generatingCloud = true;
-        cloudParent = new GameObject("Cloud Parent").transform;
 
         StartCoroutine(LoopGenerateCloud());
     }
@@ -30,7 +34,7 @@ public class CloudManager : Singleton<CloudManager>
 
     public void ClearCloud()
     {
-        Destroy(cloudParent.gameObject);
+        ClearChildObject(cloudParent);
     }
 
     IEnumerator LoopGenerateCloud()
@@ -55,6 +59,7 @@ public class CloudManager : Singleton<CloudManager>
     IEnumerator GenerateCloud()
     {
         int type = Random.Range(0, cloudPrefabs.Length - 1);
+        zyf.Out(type);
         float randomX = Random.Range(-rangeX, rangeX);
         GameObject cloud = Instantiate(cloudPrefabs[type],
             new Vector2(randomX, generateY), Quaternion.identity, cloudParent);
@@ -64,13 +69,23 @@ public class CloudManager : Singleton<CloudManager>
             yield return null;
 
         }
+        Destroy(cloud);
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         float height = 1f;
-        Gizmos.DrawCube(new Vector2(0, generateY - height / 2), new Vector2(rangeX, height));
-        Gizmos.DrawCube(new Vector2(0, destoryY), new Vector2(rangeX, height));
+        Gizmos.DrawCube(new Vector2(0, generateY - height / 2), new Vector2(rangeX * 2, height));
+        Gizmos.DrawCube(new Vector2(0, destoryY), new Vector2(6, 0.5f));
+    }
+
+    void ClearChildObject(Transform _parent)
+    {
+        while (_parent.childCount > 0)
+        {
+            Destroy(_parent.GetChild(0).gameObject);
+            _parent.GetChild(0).SetParent(null);
+        }
     }
 }

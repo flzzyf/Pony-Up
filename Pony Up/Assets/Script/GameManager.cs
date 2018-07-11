@@ -33,6 +33,13 @@ public class GameManager : Singleton<GameManager>
             score += Time.deltaTime;
             scoreText.text = scoreTextText + (score * 10).ToString("F0");
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameStart();
+            }
+        }
     }
 
     void Init()
@@ -89,5 +96,10 @@ public class GameManager : Singleton<GameManager>
         GameReset();
 
         GameStart();
+    }
+
+    public void IEnumeratorTrigger(IEnumerator _ie)
+    {
+        StartCoroutine(_ie);
     }
 }

@@ -14,22 +14,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
             if (FindObjectsOfType<T>().Length > 1)
             {
-                throw new Exception("超过一个!");
-                return instance;
+                throw new Exception("超过一个Singleton!");
             }
             //没有现有脚本
             if (instance == null)
             {
                 string instanceName = typeof(T).Name;
-                throw new Exception("Instance Name: " + instanceName);
-
-                GameObject instanceGO = GameObject.Find(instanceName);
-
-                if (instanceGO == null)
-                    instanceGO = new GameObject(instanceName);
-                instance = instanceGO.AddComponent<T>();
-                DontDestroyOnLoad(instanceGO);  //保证实例不会被释放
-                throw new Exception("Add New Singleton " + instance.name + " in Game!");
+                throw new Exception("没有现有脚本");
             }
         }
 
