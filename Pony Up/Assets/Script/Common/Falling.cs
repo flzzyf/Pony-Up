@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class Falling : MonoBehaviour
 {
-    public float speed = .8f;
     public bool destoryWhenInvisible = true;
+    public bool triggerToFall = false;
 
     bool invisible = false;
+    Rigidbody2D rb;
+    bool triggered = false;
 
     void Start()
     {
-        // transform.GetComponent<Rigidbody2D>().velocity = Vector2.down;
-
+        rb = GetComponent<Rigidbody2D>();
+        if (!triggerToFall)
+        {
+            rb.gravityScale = GameManager.Instance().globalGravity;
+        }
     }
 
-    void FixedUpdate()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (!invisible)
-        {
-            // transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+        if (triggered)
+            return;
 
-        }
+        triggered = true;
+        rb.gravityScale = GameManager.Instance().globalGravity;
+
     }
 
     void OnBecameInvisible()

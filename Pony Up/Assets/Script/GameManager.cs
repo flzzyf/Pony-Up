@@ -18,6 +18,8 @@ public class GameManager : Singleton<GameManager>
     public GameObject startingPanel;
     public GameObject groundObject;
 
+    public float globalGravity = 0.15f;
+
     void Start()
     {
         scoreTextText = scoreText.text;
