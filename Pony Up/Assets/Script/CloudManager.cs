@@ -92,7 +92,8 @@ public class CloudManager : Singleton<CloudManager>
             yield return null;
 
         }
-        Destroy(cloud);
+        if(GameManager.Instance().gaming)
+            Destroy(cloud);
     }
 
     void OnDrawGizmosSelected()

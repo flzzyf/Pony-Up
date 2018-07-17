@@ -1259,6 +1259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 1736779515254676, guid: 4ac9a4944daf94d7ab6b771d7044fae2, type: 2}
   generatePos: {x: 0, y: 6}
+  firstLevel: 1
 --- !u!114 &828317121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,8 +1288,8 @@ MonoBehaviour:
   cane: {fileID: 1466042896}
   maxRotation: 80
   maxDistance: 2
-  speed: 3.3
-  offsetScale: 0.8
+  speed: 4
+  offsetScale: 1
 --- !u!114 &828317123
 MonoBehaviour:
   m_ObjectHideFlags: 0
