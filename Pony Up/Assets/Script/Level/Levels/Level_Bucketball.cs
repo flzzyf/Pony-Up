@@ -24,14 +24,22 @@ public class Level_Bucketball : Level
         while (GameManager.Instance().gaming && a > 0)
         {
             a--;
+
+            int direction;
+            direction = Random.Range(0, 2) > 0 ? 1 : -1;
+
             float generatePosX = Random.Range(shootingStarCenterPoint.x - shootingStarSize.x / 2,
-                                                shootingStarCenterPoint.x + shootingStarSize.x / 2);
+                                                shootingStarCenterPoint.x + shootingStarSize.x / 2) * direction;
             float generatePosY = Random.Range(shootingStarCenterPoint.y - shootingStarSize.y / 2,
                                                 shootingStarCenterPoint.y + shootingStarSize.y / 2);
 
-            LevelGenerator.Instance().InstantiateObject("Cube_Small", new Vector2(generatePosX, generatePosY), shootingStarDirection);
+            Vector2 launchDirection = shootingStarDirection;
+            launchDirection.x *= direction;
 
-            yield return new WaitForSeconds(0.2f);
+            LevelGenerator.Instance().InstantiateObject("Cube_Small", new Vector2(generatePosX, generatePosY), 
+                                                        launchDirection);
+
+            yield return new WaitForSeconds(0.3f);
         }
 
         LevelFinish();

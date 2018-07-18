@@ -18,8 +18,12 @@ public class TwilightSparkle : MonoBehaviour
     {
         if (GameManager.Instance().gaming)
         {
-            float scaleX = CaneController.Instance().cane.position.x < 0 ? -1 : 1;
-            transform.localScale = new Vector3(scaleX, 1, 1);
+            if(Input.GetMouseButton(0))
+            {
+                float scaleX = CaneController.Instance().cane.position.x < 0 ? -1 : 1;
+                transform.localScale = new Vector3(scaleX, 1, 1);
+            }
+            
         }
     }
 
