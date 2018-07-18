@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4904156719437290}
   - component: {fileID: 212311289005139390}
-  - component: {fileID: 114701385454468678}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -39,6 +38,7 @@ GameObject:
   - component: {fileID: 50935268384394554}
   - component: {fileID: 61593658113025644}
   - component: {fileID: 114613729497525228}
+  - component: {fileID: 114988334176351632}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Enemy
@@ -129,20 +129,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0852fe1f5ee0f4b7c8c1faa0ea36283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.4
-  destoryWhenInvisible: 1
   triggerToFall: 0
---- !u!114 &114701385454468678
+--- !u!114 &114988334176351632
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118608015057156}
+  m_GameObject: {fileID: 1736779515254676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d956a68c711a54a2ab569c7a5fff7da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disappearRange: 1
 --- !u!212 &212311289005139390
 SpriteRenderer:
   m_ObjectHideFlags: 1

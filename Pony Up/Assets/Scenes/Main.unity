@@ -905,53 +905,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &558940293
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295841594655560, guid: 7367bd59ae64f494088930de44838517, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 50525121735339530, guid: 7367bd59ae64f494088930de44838517,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7367bd59ae64f494088930de44838517, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &576721318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1164,7 @@ GameObject:
   - component: {fileID: 828317123}
   - component: {fileID: 828317124}
   - component: {fileID: 828317125}
+  - component: {fileID: 828317126}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1278,9 +1232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a04d2d62043495ea638aa757073492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingStarCenterPoint: {x: 3.52, y: 6.65}
-  shootingStarSize: {x: 1.91, y: 0.91}
-  shootingStarDirection: {x: -1.7, y: -2.9}
 --- !u!114 &828317122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,7 +1292,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingStarCenterPoint: {x: 4.15, y: 6.35}
   shootingStarSize: {x: 2.71, y: 0.44}
-  shootingStarDirection: {x: -0.7, y: -1.81}
+  shootingStarDirection: {x: -2.07, y: -1.81}
+--- !u!114 &828317126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828317117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2584713a147f39241bf5e124fa9330cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BGM
+    clip: {fileID: 8300000, guid: e266546c405cfd547afa73a03164aa18, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &925628935
 GameObject:
   m_ObjectHideFlags: 0

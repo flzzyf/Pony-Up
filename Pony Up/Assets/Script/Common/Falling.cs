@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Falling : MonoBehaviour
 {
-    public bool destoryWhenInvisible = true;
     public bool triggerToFall = false;
 
-    bool invisible = false;
     Rigidbody2D rb;
     bool triggered = false;
 
@@ -28,15 +26,5 @@ public class Falling : MonoBehaviour
         triggered = true;
         rb.gravityScale = GameManager.Instance().globalGravity;
 
-    }
-
-    void OnBecameInvisible()
-    {
-        invisible = true;
-
-        if (destoryWhenInvisible)
-            Destroy(transform.parent.gameObject);
-        else
-            gameObject.SetActive(false);
     }
 }

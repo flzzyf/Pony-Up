@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4072600606821788}
   - component: {fileID: 212794012100196726}
-  - component: {fileID: 114319978096070258}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -39,6 +38,7 @@ GameObject:
   - component: {fileID: 50525121735339530}
   - component: {fileID: 61137854307411348}
   - component: {fileID: 114517892034406428}
+  - component: {fileID: 114472726720089036}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Enemy
@@ -118,17 +118,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114319978096070258
+--- !u!114 &114472726720089036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063077109174186}
+  m_GameObject: {fileID: 1700337087184916}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d956a68c711a54a2ab569c7a5fff7da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disappearRange: 1
 --- !u!114 &114517892034406428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0852fe1f5ee0f4b7c8c1faa0ea36283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destoryWhenInvisible: 1
   triggerToFall: 1
 --- !u!212 &212794012100196726
 SpriteRenderer:

@@ -63,6 +63,8 @@ public class GameManager : Singleton<GameManager>
         LevelManager.Instance().StartLevel();
 
         CloudManager.Instance().StartGenerateCloud();
+
+        SoundManager.Instance().Play("BGM");
     }
 
     public void GameOver()

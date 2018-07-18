@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class DestoryWhenInvisible : MonoBehaviour
 {
+    public float disappearRange = 1f;
 
-    void OnBecameInvisible()
+    Vector2 worldScreenSize;
+
+    bool destoryed = false;
+
+    private void Awake()
     {
-        Destroy(transform.parent.gameObject);
+        worldScreenSize = zyf.GetWorldScreenSize();
+    }
+
+    private void Update()
+    {
+        if (destoryed)
+            return;
+
+        if (transform.position.y < -1 * worldScreenSize.y / 2 - disappearRange)
+        {
+            destoryed = true;
+            Destroy(gameObject);
+
+        }
     }
 }
