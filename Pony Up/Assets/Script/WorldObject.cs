@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WorldObject : MonoBehaviour
 {
-    public float speed = .8f;
     public float movingDistance = 5f;
 
     Vector2 originPos;
@@ -19,7 +18,7 @@ public class WorldObject : MonoBehaviour
         if (GameManager.Instance().gaming &&
          Mathf.Abs(transform.position.y - originPos.y) < movingDistance)
         {
-            transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+            transform.Translate(Vector2.down * GameManager.Instance().backgroundFallingSpeed * Time.deltaTime, Space.World);
         }
     }
 

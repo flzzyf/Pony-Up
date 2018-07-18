@@ -13,12 +13,14 @@ public class GameManager : Singleton<GameManager>
 
     [HideInInspector]
     public bool gaming;
-    float score;
+
+    int score;
 
     public GameObject startingPanel;
     public GameObject groundObject;
 
     public float globalGravity = 0.15f;
+    public float backgroundFallingSpeed = 0.8f;
 
     void Start()
     {
@@ -32,8 +34,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (gaming)
         {
-            score += Time.deltaTime;
-            scoreText.text = scoreTextText + (score * 10).ToString("F0");
+            //score += Time.deltaTime;
+            //scoreText.text = scoreTextText + (score * 10).ToString("F0");
         }
         else
         {
@@ -48,6 +50,13 @@ public class GameManager : Singleton<GameManager>
     {
         score = 0;
         scoreText.text = scoreTextText + "0";
+    }
+
+    public void LevelFinish()
+    {
+        score++;
+        scoreText.text = scoreTextText + score;
+
     }
 
     public void GameStart()

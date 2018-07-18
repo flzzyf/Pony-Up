@@ -78,7 +78,7 @@ public class CloudManager : Singleton<CloudManager>
         if (random > 1)
             cloud.GetComponent<SpriteRenderer>().sortingLayerName = "Cloud";
         //持续下降
-        while (generatingCloud && cloud.transform.position.y > destoryY)
+        while (generatingCloud && cloud != null && cloud.transform.position.y > destoryY)
         {
             cloud.transform.Translate(Vector2.down * speed * Time.deltaTime);
             yield return null;

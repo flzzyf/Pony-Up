@@ -18,9 +18,20 @@ public class Falling : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(triggerToFall && !triggered)
+        {
+            transform.Translate(Vector2.down * GameManager.Instance().backgroundFallingSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (triggered)
+            return;
+
+        if (other.gameObject.tag == "Enemy")
             return;
 
         triggered = true;

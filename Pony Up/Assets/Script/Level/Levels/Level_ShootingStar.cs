@@ -8,15 +8,18 @@ public class Level_ShootingStar : Level
     public Vector2 shootingStarSize;
     public Vector2 shootingStarDirection;
 
+    public int count = 15;
+    public float interval = 0.5f;
+    public float torque = 3;
+
     public override void StartLevel()
     {
-        zyf.Out("流星关卡");
         GameManager.Instance().IEnumeratorTrigger(LevelStart());
     }
 
     IEnumerator LevelStart()
     {
-        int a = 10;
+        int a = count;
         while (GameManager.Instance().gaming && a > 0)
         {
             a--;
@@ -25,9 +28,9 @@ public class Level_ShootingStar : Level
             float generatePosY = Random.Range(shootingStarCenterPoint.y - shootingStarSize.y / 2,
                                                 shootingStarCenterPoint.y + shootingStarSize.y / 2);
 
-            LevelGenerator.Instance().InstantiateObject("Star", new Vector2(generatePosX, generatePosY), shootingStarDirection);
+            LevelGenerator.Instance().InstantiateObject("Star", new Vector2(generatePosX, generatePosY), shootingStarDirection, torque);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(interval);
         }
 
         LevelFinish();

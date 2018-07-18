@@ -9,6 +9,6 @@ public class Level : MonoBehaviour
     public void LevelFinish()
     {
         if (GameManager.Instance().gaming)
-            LevelGenerator.Instance().LevelFinish();
+            LevelManager.Instance().LevelFinish();
     }
 }
