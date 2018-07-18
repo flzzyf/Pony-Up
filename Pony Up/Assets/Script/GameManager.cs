@@ -67,7 +67,6 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
-        Debug.Log("GameOver");
         gaming = false;
 
         StartCoroutine(GameOverAnim());

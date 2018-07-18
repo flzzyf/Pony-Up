@@ -9,20 +9,26 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     Transform objectParent;
 
-    List<Level> levelList = new List<Level>();
+    public List<LevelSelector> levelList = new List<LevelSelector>();
 
     public enum objectType { Cube, Star };
 
     int lastLevelIndex = 0;
     public bool firstLevel = true;
 
+    [System.Serializable]
+    public class LevelSelector
+    {
+        public string name;
+        [SerializeField]
+        public Level level;
+    }
+
     void Start()
     {
         objectParent = new GameObject("Parent_Object").transform;
 
-        //添加关卡后从这里加入关卡数列
-        levelList.Add(new Cubes());
-        levelList.Add(new ShootingStar());
+        //levelList.Add(GetComponent)
     }
 
     public void StartLevel()
@@ -43,7 +49,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
         lastLevelIndex = levelIndex;
         // levelIndex = 1;
-        levelList[levelIndex].StartLevel();
+        levelList[levelIndex].level.StartLevel();
     }
 
     public void ClearLevel()

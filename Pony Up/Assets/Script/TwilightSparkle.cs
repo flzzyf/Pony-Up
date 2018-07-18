@@ -27,7 +27,6 @@ public class TwilightSparkle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("DIE");
             Dead();
             GameManager.Instance().GameOver();
         }
