@@ -48,8 +48,6 @@ public class GameManager : Singleton<GameManager>
     {
         score = 0;
         scoreText.text = scoreTextText + "0";
-
-        LevelGenerator.Instance().firstLevel = true;
     }
 
     public void GameStart()

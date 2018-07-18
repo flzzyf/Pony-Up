@@ -13,13 +13,6 @@ public class CloudManager : Singleton<CloudManager>
     public Vector2 generateRate;
     bool generatingCloud = false;
 
-    Transform cloudParent;
-
-    void Start()
-    {
-        cloudParent = new GameObject("Parent_Cloud").transform;
-    }
-
     public void StartGenerateCloud()
     {
         generatingCloud = true;
@@ -34,7 +27,7 @@ public class CloudManager : Singleton<CloudManager>
 
     public void ClearCloud()
     {
-        ClearChildObject(cloudParent);
+        ParentManager.Instance().ClearChilds("Cloud");
     }
 
     IEnumerator LoopGenerateCloud()
@@ -79,8 +72,7 @@ public class CloudManager : Singleton<CloudManager>
         lastCloudX = randomX;
 
         //生成云
-        GameObject cloud = Instantiate(cloudPrefabs[type],
-            new Vector2(randomX, generateY), Quaternion.identity, cloudParent);
+        GameObject cloud = Instantiate(cloudPrefabs[type], new Vector2(randomX, generateY), Quaternion.identity, ParentManager.Instance().GetParent("Cloud"));
         //云有33%概率会遮挡小马
         int random = Random.Range(0, 3);
         if (random > 1)
@@ -104,12 +96,4 @@ public class CloudManager : Singleton<CloudManager>
         Gizmos.DrawCube(new Vector2(0, destoryY), new Vector2(6, 0.5f));
     }
 
-    void ClearChildObject(Transform _parent)
-    {
-        while (_parent.childCount > 0)
-        {
-            Destroy(_parent.GetChild(0).gameObject);
-            _parent.GetChild(0).SetParent(null);
-        }
-    }
 }

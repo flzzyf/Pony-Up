@@ -25,7 +25,7 @@ public class Level_ShootingStar : Level
             float generatePosY = Random.Range(shootingStarCenterPoint.y - shootingStarSize.y / 2,
                                                 shootingStarCenterPoint.y + shootingStarSize.y / 2);
 
-            LevelGenerator.Instance().InstantiateObject("Cube", new Vector2(generatePosX, generatePosY), shootingStarDirection);
+            LevelGenerator.Instance().InstantiateObject("Star", new Vector2(generatePosX, generatePosY), shootingStarDirection);
 
             yield return new WaitForSeconds(1f);
         }

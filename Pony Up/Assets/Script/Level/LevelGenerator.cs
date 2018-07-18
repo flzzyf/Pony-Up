@@ -8,13 +8,13 @@ public class LevelGenerator : Singleton<LevelGenerator>
     public GameObject cube;
     public Vector2 generatePos = new Vector2(0, 6);
 
-    Transform objectParent;
-
+    [Header("关卡")]
     public List<LevelSelector> levelList = new List<LevelSelector>();
 
     int lastLevelIndex = 0;
-    public bool firstLevel = true;
+    public int firstLevel = 0;
 
+    [Header("关卡物体")]
     public LevelObject[] levelObjects;
     Dictionary<string, LevelObject> levelObjectDictionary = new Dictionary<string, LevelObject>();
 
@@ -35,8 +35,6 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     void Start()
     {
-        objectParent = new GameObject("Parent_Object").transform;
-
         foreach (LevelObject item in levelObjects)
         {
             levelObjectDictionary[item.name] = item;
@@ -53,21 +51,21 @@ public class LevelGenerator : Singleton<LevelGenerator>
             levelIndex %= levelList.Count;
         }
 
-        if (firstLevel)
+        if (firstLevel != -1)
         {
-            levelIndex = 0;
-            firstLevel = false;
+            levelIndex = firstLevel;
+            firstLevel = -1;
         }
 
         lastLevelIndex = levelIndex;
 
-        levelIndex = 2;
         levelList[levelIndex].level.StartLevel();
     }
 
     public void ClearLevel()
     {
-        ClearChildObject(objectParent);
+        ParentManager.Instance().ClearChilds("LevelObject");
+
     }
 
     public void LevelFinish()
@@ -88,7 +86,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
     {
         LevelObject obj = levelObjectDictionary[_name];
 
-        GameObject go = Instantiate(obj.prefab, _pos, Quaternion.identity, objectParent);
+        GameObject go = Instantiate(obj.prefab, _pos, Quaternion.identity, ParentManager.Instance().GetParent("LevelObject"));
         if (_force != default(Vector2))
         {
             go.GetComponent<Rigidbody2D>().velocity = _force;
