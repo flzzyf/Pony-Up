@@ -1307,13 +1307,37 @@ MonoBehaviour:
   sounds:
   - name: BGM
     clip: {fileID: 8300000, guid: e266546c405cfd547afa73a03164aa18, type: 3}
-    volume: 0.629
+    volume: 0.6
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: GameOver
     clip: {fileID: 8300000, guid: cc9f0df2215daa94cb1f5660b1f71f48, type: 3}
     volume: 0.41
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 7f19a7bf585854d4783b4b7192b42932, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Magic_Start
+    clip: {fileID: 8300000, guid: fd3186e3a47e1d94fba3cab4c6362ef8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Magic_Looping
+    clip: {fileID: 8300000, guid: 1d2500bf356cc3c4da9a680ca0dc447c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Magic_End
+    clip: {fileID: 8300000, guid: 8e96b8b9577d3a8469b637c3ee0aad37, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}

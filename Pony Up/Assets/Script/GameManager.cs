@@ -76,6 +76,7 @@ public class GameManager : Singleton<GameManager>
 
         SoundManager.Instance().StopPlay("BGM", 1f);
         SoundManager.Instance().Play("GameOver");
+        SoundManager.Instance().Play("Hit");
 
     }
 

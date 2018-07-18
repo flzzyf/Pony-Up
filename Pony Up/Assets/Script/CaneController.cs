@@ -44,6 +44,9 @@ public class CaneController : Singleton<CaneController>
             mouseDown = true;
 
             targetPos = cane.position;
+
+            SoundManager.Instance().Play("Magic_Start");
+            SoundManager.Instance().Play("Magic_Looping");
         }
 
         if (Input.GetMouseButton(0))
@@ -78,6 +81,10 @@ public class CaneController : Singleton<CaneController>
             lastMousePoint = Vector2.zero;
 
             offset = Vector2.zero;
+
+            SoundManager.Instance().Play("Magic_End");
+            SoundManager.Instance().StopPlay("Magic_Looping");
+
         }
     }
     //移动旋转
