@@ -30,4 +30,43 @@ public class SoundManager : Singleton<SoundManager>
 
         s.source.Play();
     }
+
+    public void StopPlay(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.source.Stop();
+    }
+
+    public void StopPlay(string name, float _fadeTime)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        StartCoroutine(FadeSound(s.source));
+    }
+
+    IEnumerator FadeSound(AudioSource _source)
+    {
+        float originVolume = _source.volume;
+
+        while(_source.volume > 0)
+        {
+            _source.volume = _source.volume - Time.deltaTime;
+
+            yield return null;
+        }
+
+        _source.Stop();
+        _source.volume = originVolume;
+    }
 }

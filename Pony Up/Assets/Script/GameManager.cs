@@ -74,11 +74,14 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(GameOverAnim());
         CloudManager.Instance().StopGenerateCloud();
 
+        SoundManager.Instance().StopPlay("BGM", 1f);
+        SoundManager.Instance().Play("GameOver");
+
     }
 
     IEnumerator GameOverAnim()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.6f);
         GameReset();
 
     }
