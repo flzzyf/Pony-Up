@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a04d2d62043495ea638aa757073492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: 3
+  firstLevel: -1
   levelInterval: 3
   levelStartWaiting: 2
   text_level: {fileID: 815695141}
@@ -1478,8 +1478,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Hit
-    clip: {fileID: 8300000, guid: 7f19a7bf585854d4783b4b7192b42932, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 3021cb7a1b2b92249a19ba4483246245, type: 3}
+    volume: 0.881
     pitch: 1
     loop: 0
     source: {fileID: 0}
