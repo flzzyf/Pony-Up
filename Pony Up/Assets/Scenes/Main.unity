@@ -1165,6 +1165,7 @@ GameObject:
   - component: {fileID: 828317124}
   - component: {fileID: 828317125}
   - component: {fileID: 828317126}
+  - component: {fileID: 828317127}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1220,7 +1221,16 @@ MonoBehaviour:
     level: {fileID: 828317124}
   - name: ShootingStar
     level: {fileID: 828317125}
+  - name: Bucketball
+    level: {fileID: 828317127}
   firstLevel: 1
+  levelObjects:
+  - name: Cube
+    prefab: {fileID: 1736779515254676, guid: 4ac9a4944daf94d7ab6b771d7044fae2, type: 2}
+  - name: Bucket
+    prefab: {fileID: 1634300827906348, guid: 9d50464df652d7942838b08e5e06d74f, type: 2}
+  - name: Cube_Small
+    prefab: {fileID: 1736779515254676, guid: 4359a532ef606e2448cd665dcbefe0d9, type: 2}
 --- !u!114 &828317121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,6 +1351,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+--- !u!114 &828317127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828317117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea12b1d50e3194847b8508940f516c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingStarCenterPoint: {x: 3.68, y: 6}
+  shootingStarSize: {x: 1.02, y: 2.67}
+  shootingStarDirection: {x: -2.27, y: -2.29}
 --- !u!1 &925628935
 GameObject:
   m_ObjectHideFlags: 0

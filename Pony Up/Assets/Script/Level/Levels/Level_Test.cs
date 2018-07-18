@@ -16,8 +16,7 @@ public class Level_Test : Level
         while (GameManager.Instance().gaming && a > 0)
         {
             a--;
-            LevelGenerator.Instance().InstantiateObject(
-                LevelGenerator.objectType.Cube, LevelGenerator.Instance().generatePos);
+            LevelGenerator.Instance().InstantiateObject("Cube", LevelGenerator.Instance().generatePos);
 
             yield return new WaitForSeconds(1f);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LevelGenerator : Singleton<LevelGenerator>
 {
@@ -11,10 +12,11 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     public List<LevelSelector> levelList = new List<LevelSelector>();
 
-    public enum objectType { Cube, Star };
-
     int lastLevelIndex = 0;
     public bool firstLevel = true;
+
+    public LevelObject[] levelObjects;
+    Dictionary<string, LevelObject> levelObjectDictionary = new Dictionary<string, LevelObject>();
 
     [System.Serializable]
     public class LevelSelector
@@ -24,17 +26,27 @@ public class LevelGenerator : Singleton<LevelGenerator>
         public Level level;
     }
 
+    [System.Serializable]
+    public class LevelObject
+    {
+        public string name;
+        public GameObject prefab;
+    }
+
     void Start()
     {
         objectParent = new GameObject("Parent_Object").transform;
 
-        //levelList.Add(GetComponent)
+        foreach (LevelObject item in levelObjects)
+        {
+            levelObjectDictionary[item.name] = item;
+        }
     }
 
     public void StartLevel()
     {
         
-        int levelIndex = Random.Range(0, levelList.Count);
+        int levelIndex = UnityEngine.Random.Range(0, levelList.Count);
         if (levelIndex == lastLevelIndex)
         {
             levelIndex++;
@@ -48,7 +60,8 @@ public class LevelGenerator : Singleton<LevelGenerator>
         }
 
         lastLevelIndex = levelIndex;
-        // levelIndex = 1;
+
+        levelIndex = 2;
         levelList[levelIndex].level.StartLevel();
     }
 
@@ -71,18 +84,14 @@ public class LevelGenerator : Singleton<LevelGenerator>
         }
     }
     //生成物体并指向移动方向
-    public void InstantiateObject(objectType _type, Vector2 _pos, Vector2 _force = default(Vector2))
+    public void InstantiateObject(string _name, Vector2 _pos, Vector2 _force = default(Vector2))
     {
-        GameObject go = cube;
-        if (_type == objectType.Cube)
-        {
-            go = cube;
-        }
-        GameObject obj = Instantiate(go, _pos, Quaternion.identity, objectParent);
+        LevelObject obj = levelObjectDictionary[_name];
+
+        GameObject go = Instantiate(obj.prefab, _pos, Quaternion.identity, objectParent);
         if (_force != default(Vector2))
         {
-            // obj.GetComponent<Rigidbody2D>().gravityScale = 0;
-            obj.GetComponent<Rigidbody2D>().velocity = _force;
+            go.GetComponent<Rigidbody2D>().velocity = _force;
         }
     }
 }

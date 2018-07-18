@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level_ShootingStar : Level
+public class Level_Bucketball : Level
 {
     public Vector2 shootingStarCenterPoint;
     public Vector2 shootingStarSize;
@@ -10,13 +10,17 @@ public class Level_ShootingStar : Level
 
     public override void StartLevel()
     {
-        zyf.Out("流星关卡");
+        zyf.Out("篮球关卡");
         GameManager.Instance().IEnumeratorTrigger(LevelStart());
     }
 
     IEnumerator LevelStart()
     {
-        int a = 10;
+        LevelGenerator.Instance().InstantiateObject("Bucket", new Vector2(0, zyf.GetWorldScreenSize().y /2 + 1));
+
+        yield return new WaitForSeconds(2f);
+
+        int a = 30;
         while (GameManager.Instance().gaming && a > 0)
         {
             a--;
@@ -25,9 +29,9 @@ public class Level_ShootingStar : Level
             float generatePosY = Random.Range(shootingStarCenterPoint.y - shootingStarSize.y / 2,
                                                 shootingStarCenterPoint.y + shootingStarSize.y / 2);
 
-            LevelGenerator.Instance().InstantiateObject("Cube", new Vector2(generatePosX, generatePosY), shootingStarDirection);
+            LevelGenerator.Instance().InstantiateObject("Cube_Small", new Vector2(generatePosX, generatePosY), shootingStarDirection);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         LevelFinish();
