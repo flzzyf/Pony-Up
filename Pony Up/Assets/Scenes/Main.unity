@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a04d2d62043495ea638aa757073492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: -1
+  firstLevel: 0
   levelInterval: 3
   levelStartWaiting: 2
   text_level: {fileID: 815695141}
