@@ -42,8 +42,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public void LevelFinish()
     {
-        GameManager.Instance().LevelFinish();
-
         StartCoroutine(LevelFinishWaiting());
     }
 
@@ -71,6 +69,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         yield return new WaitForSeconds(levelInterval);
 
+        GameManager.Instance().LevelFinish();
         StartLevel();
     }
 

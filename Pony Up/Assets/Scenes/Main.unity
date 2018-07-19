@@ -171,7 +171,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: faf92ca1f65824c3b87f213d84d1927e, type: 3}
     m_FontSize: 94
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 97
     m_Alignment: 0
@@ -1200,10 +1200,10 @@ RectTransform:
   m_Father: {fileID: 1729892902}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 720}
-  m_SizeDelta: {x: 673.9, y: 244.1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -240}
+  m_SizeDelta: {x: 673.9, y: 244.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815695143
 MonoBehaviour:
@@ -1925,10 +1925,10 @@ RectTransform:
   m_Father: {fileID: 274219406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 918.5, y: 173.3}
+  m_SizeDelta: {x: -161.5, y: 173.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148049114
 MonoBehaviour:
@@ -1953,12 +1953,12 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: faf92ca1f65824c3b87f213d84d1927e, type: 3}
     m_FontSize: 86
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 96
+    m_MaxSize: 90
     m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
+    m_AlignByGeometry: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
@@ -2609,10 +2609,10 @@ RectTransform:
   m_Father: {fileID: 274219406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 376}
-  m_SizeDelta: {x: 918.5, y: 347.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -584}
+  m_SizeDelta: {x: -161.5, y: 347.69995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846293709
 MonoBehaviour:
@@ -2637,7 +2637,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: faf92ca1f65824c3b87f213d84d1927e, type: 3}
     m_FontSize: 78
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 96
     m_Alignment: 1
